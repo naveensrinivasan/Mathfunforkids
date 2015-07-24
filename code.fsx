@@ -1,4 +1,5 @@
 open System
+
 (* 
 
 Follow the Numbers
@@ -80,10 +81,9 @@ let followthenumber (number : int) =
         | _ -> inner newvalue (newvalue :: newset)
     inner number []
 
-
-  [10..99]
-      |> List.map(fun x -> (x, followthenumber x))
-      |> List.toSeq
-      |> Seq.groupBy snd
-      |> Seq.iter(fun (x,y) -> printfn "Number %A -> %A" (Seq.toList y |> List.map(fun x -> fst(x))) x) 
-      |> ignore
+[ 10..99 ]
+|> List.map (fun x -> (x, followthenumber x))
+|> List.toSeq
+|> Seq.groupBy snd
+|> Seq.iter (fun (x, y) -> printfn "Number %A -> %A" (Seq.toList y |> List.map fst) x)
+|> ignore
